@@ -93,7 +93,7 @@ public class Receta {
             return true;
         }
         else{
-            return true;
+            return false;
         }
     }
 
@@ -115,7 +115,7 @@ public class Receta {
         }
         sb.append("Instrucciones: ").append("\n");
         for(int j=0; j<numInstrucciones;j++){
-            sb.append(j+1).append(instrucciones[j]).append("\n");
+            sb.append(j+1+". ").append(instrucciones[j]).append("\n");
         }
         return sb.toString();
     }
@@ -126,11 +126,11 @@ public class Receta {
         for(int i=0; i<numIngredientes;i++){
             sb.append(ingrediente[i]).append("\n");
         }
-        sb.append("Instrucciones: ").append("\n");
+        sb.append("INSTRUCCIONES: ").append("\n");
         for(int j=0; j<numInstrucciones;j++){
             sb.append(instrucciones[j]).append("\n");
         }
-        sb.append("-----").append("\n");
+        sb.append("----").append("\n");
         return sb.toString();
     }
 
