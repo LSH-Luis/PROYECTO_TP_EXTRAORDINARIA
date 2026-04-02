@@ -14,16 +14,24 @@ public class Receta {
 
     // @todo: atributos privados
 
+    private String nombre;
+    private String [] ingredientes;
+    private String [] instrucciones;
+    private int numIngredientes;
+    private int numInstrucciones;
+    private int maxIngredientes;
+    private int maxInstrucciones;
+
     public Receta(String nombre, int maxIngredientes, int maxInstrucciones) {
         this.nombre= nombre;
         this.maxIngredientes= maxIngredientes;
         this.maxInstrucciones= maxInstrucciones;
 
-        this.ingrediente= ingrediente;
-        this.instruccion= instruccion;
+        this.ingredientes= new String[maxIngredientes];
+        this.instrucciones= new String[maxInstrucciones];
 
-        this.numIngredientes= numIngredientes;
-        this.numInstrucciones= numInstrucciones;
+        this.numIngredientes= 0;
+        this.numInstrucciones= 0;
     }
 
     public String getNombre() {
@@ -33,7 +41,7 @@ public class Receta {
     public String[] getIngredientes() {
         String [] copiaIngredientes= new String[numIngredientes];
         for( int i= 0; i< numIngredientes; i++){
-            copiaIngredientes[i]= ingrdientes[i];
+            copiaIngredientes[i]= ingredientes[i];
         }
         return copiaIngredientes;
     }
@@ -103,11 +111,11 @@ public class Receta {
         sb.append("Receta: ").append(this.nombre).append("\n");
         sb.append("Ingredientes: ").append("\n");
         for(int i=0; i<numIngredientes;i++){
-            sb.apppend("- ").append(ingrediente[i]).append("\n");
+            sb.append("- ").append(ingrediente[i]).append("\n");
         }
         sb.append("Instrucciones: ").append("\n");
-        for(int j=0; i<numInstrucciones;j++){
-            sb.apppend(j+1).append(instrucciones[j]).append("\n");
+        for(int j=0; j<numInstrucciones;j++){
+            sb.append(j+1).append(instrucciones[j]).append("\n");
         }
         return sb.toString();
     }
@@ -119,7 +127,7 @@ public class Receta {
             sb.append(ingrediente[i]).append("\n");
         }
         sb.append("Instrucciones: ").append("\n");
-        for(int j=0; i<numInstrucciones;j++){
+        for(int j=0; j<numInstrucciones;j++){
             sb.append(instrucciones[j]).append("\n");
         }
         sb.append("-----").append("\n");
@@ -135,7 +143,7 @@ public class Receta {
     }
 
     public static Receta fromBufferedReader(BufferedReader reader, int maxIngredientes, int maxInstrucciones) throws IOException {
-        String nombre= reader.readline();
+        String nombre= reader.readLine();
         if(nombre==null){
             return null;
         }
